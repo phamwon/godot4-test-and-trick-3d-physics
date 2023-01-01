@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd54c533qcj4w"]
+
+[ext_resource type="PlaneMesh" uid="uid://c80b85j5nqxcn" path="res://assets/plane.tres" id="2_5gnnh"]
+[ext_resource type="Script" path="res://SpawnModelsWithRenderingServer.gd" id="2_k55cq"]
+[ext_resource type="ArrayMesh" uid="uid://cf43t3gvvmo7t" path="res://assets/RockMesh.tres" id="3_qo78w"]
+[ext_resource type="PackedScene" uid="uid://csi8oehmo3wgd" path="res://Monitor.tscn" id="4_vq3dl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ci6k6"]
+size = Vector3(50, 1, 80)
+
+[sub_resource type="MultiMesh" id="MultiMesh_a63q1"]
+transform_format = 1
+visible_instance_count = 0
+mesh = ExtResource("3_qo78w")
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 26.0691, 0)
+shadow_enabled = true
+
+[node name="Plane" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.232143, 0)
+cast_shadow = 0
+mesh = ExtResource("2_5gnnh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
+shape = SubResource("BoxShape3D_ci6k6")
+
+[node name="Container" type="Node3D" parent="."]
+script = ExtResource("2_k55cq")
+
+[node name="Model" parent="Container" instance_placeholder="res://Model.tscn"]
+
+[node name="Timer" type="Timer" parent="Container"]
+wait_time = 0.06
+autostart = true
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="Container"]
+multimesh = SubResource("MultiMesh_a63q1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+keep_aspect = 0
+current = true
+size = 50.0
+far = 41.35
+
+[node name="Monitor" parent="." instance=ExtResource("4_vq3dl")]
+
+[connection signal="timeout" from="Container/Timer" to="Container" method="_on_timer_timeout"]

@@ -1,0 +1,21 @@
+{
+  "name": "godot-match-triple-3d",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@bitbucket.org:wonpham/godot-match-triple-3d.git",
+  "author": "Won Pham <won.baria@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite dev",
+    "preview": "vite preview",
+    "build-engine": "esbuild template/engine-initialization.js --loader:.wasm.pck=file --minify=true --format=esm --platform=browser --bundle --outfile=build/html5/engine-initialization.js"
+  },
+  "dependencies": {
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.16.10",
+    "vite": "^4.0.3",
+    "vite-plugin-https-certs": "^1.1.1"
+  }
+}

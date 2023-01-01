@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Godot4-3D"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.0", "GL Compatibility")
+run/low_processor_mode=true
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=375
+window/size/viewport_height=667
+window/size/always_on_top=true
+window/dpi/allow_hidpi=false
+window/handheld/orientation=1
+window/vsync/vsync_mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[editor]
+
+node_naming/name_num_separator=2
+scene/scene_naming=1
+
+[physics]
+
+2d/run_on_separate_thread=true
+3d/run_on_separate_thread=true
+3d/time_before_sleep=0.25
+3d/solver/solver_iterations=2
+
+[rendering]
+
+occlusion_culling/bvh_build_quality=0
+renderer/rendering_method="gl_compatibility"
+reflections/sky_reflections/texture_array_reflections=false
+shading/overrides/force_vertex_shading=true
+anti_aliasing/quality/use_debanding=true

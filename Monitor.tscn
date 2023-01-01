@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://csi8oehmo3wgd"]
+
+[ext_resource type="Script" path="res://Monitor.gd" id="1_58hwl"]
+
+[node name="Monitor" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -268.0
+offset_bottom = -554.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+script = ExtResource("1_58hwl")
+
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "FPS N"
+
+[node name="Models" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 52.0
+grow_horizontal = 2
+text = "Models N"
+
+[node name="Freeze" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = 52.0
+offset_right = -2.0
+offset_bottom = 78.0
+grow_horizontal = 2
+text = "Freeze N"
+
+[node name="Sleeping" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 78.0
+offset_bottom = 104.0
+grow_horizontal = 2
+text = "Sleeping N"

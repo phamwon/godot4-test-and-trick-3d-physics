@@ -1,0 +1,45 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cm7fcv5hxb5ax"
+path="res://.godot/imported/Rock.glb-870befe29c9e70bbeaae822ae2b28ca8.scn"
+
+[deps]
+
+source_file="res://assets/Rock.glb"
+dest_files=["res://.godot/imported/Rock.glb-870befe29c9e70bbeaae822ae2b28ca8.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=false
+animation/fps=30
+animation/trimming=false
+import_script/path=""
+_subresources={
+"meshes": {
+"Rock_Rock_1": {
+"generate/shadow_meshes": 1,
+"save_to_file/make_streamable": false,
+"save_to_file/path": "res://assets/Rock_Mesh.res"
+}
+},
+"nodes": {
+"PATH:Rock2": {
+"decomposition/precision": 1,
+"generate/physics": true,
+"physics/body_type": 1
+}
+}
+}
