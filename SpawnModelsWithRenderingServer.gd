@@ -18,9 +18,9 @@ func _ready():
 	spawn_models(50)
 
 func _input(event: InputEvent) -> void:
-	if event.is_pressed():
-		call_deferred('spawn_models', 10)
-		pass
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			call_deferred('spawn_models', 10)
 
 func create_multimesh() -> void:
 	$MultiMeshInstance3D.queue_free()

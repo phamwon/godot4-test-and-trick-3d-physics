@@ -4,10 +4,31 @@
 [ext_resource type="Shape3D" uid="uid://dgiya4mkdj7v2" path="res://assets/RockCollision.tres" id="2_rubd8"]
 
 [node name="Model" type="RigidBody3D"]
-disable_mode = 1
+process_mode = 1
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_823op")
+metadata/count_to_defreeze = 0
+metadata/last_sleep_time = 0
+metadata/collistion_count = 0
+
+[node name="SleepTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="FreezeTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = ExtResource("2_rubd8")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271422, 0)
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
