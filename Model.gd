@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const max_collistions: int = 25
+const max_collistions: int = 10
 const max_count_to_defreeze: int = 6
 const max_time_to_sleep: int = 2
 const max_sleep_time_to_freeze: int = 1
@@ -15,6 +15,7 @@ func make_freeze():
 	set_meta("collistion_count", 0)
 	
 func defreeze():
+	$SleepTimer.stop()
 	$FreezeTimer.stop()
 	set_sleeping(false)
 	set_freeze_enabled(false)
@@ -50,16 +51,9 @@ func _on_body_entered(body):
 	if is_ready_to_freeze():
 		make_freeze()
 		return
-		
-	$SleepTimer.start(max_time_to_sleep)
-	
-#	prints("count_to_defreeze", count_to_defreeze, body)
 
 func _on_body_exited(body):
-#	var collistion_count = get_meta("collistion_count")
-#	set_meta("collistion_count", collistion_count + 1)
-#	prints("collistion_count", collistion_count, body)
-
+	if body is StaticBody3D: return
 	$SleepTimer.start(max_time_to_sleep)
 
 func _on_freeze_timer_timeout():
@@ -68,7 +62,7 @@ func _on_freeze_timer_timeout():
 
 func _on_sleep_timer_timeout():
 	if is_sleeping(): return
-	
+	$SleepTimer.stop()
 	set_sleeping(true)
 	emit_signal("sleeping_state_changed")
 

@@ -13,7 +13,8 @@ var is_spawning = false
 
 func _ready():
 	$Timer.stop()
-#	set_process(false)
+	set_process(false)
+#	set_physics_process(false)
 #	get_tree().set_debug_collisions_hint(true)
 
 	create_multimesh()
@@ -39,7 +40,8 @@ func spawn_models(new_count) -> void:
 	for i in range(visible_count, total):
 		model = $Model.create_instance()
 
-		model.translate(Vector3(randi() % 15 - 8, 10, randi() % 15 - 8))
+		model.set_sleeping(true)
+		model.translate(Vector3(randi() % 15 - 8, 20, randi() % 15 - 8))
 		model.rotate(Vector3(1, 0, 0), randf() * 360)
 
 		model.add_to_group("models")
@@ -59,6 +61,9 @@ func spawn_models(new_count) -> void:
 	is_spawning = false
 
 func _process(_delta: float) -> void:
+	multi_mesh_set_transform()
+
+func _physics_process(_delta: float) -> void:
 	multi_mesh_set_transform()
 
 func _on_timer_timeout() -> void:

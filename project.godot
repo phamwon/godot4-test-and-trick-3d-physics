@@ -14,7 +14,7 @@ config/name="Godot4-3D"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 run/low_processor_mode=true
-run/low_processor_mode_sleep_usec=13000
+run/low_processor_mode_sleep_usec=3450
 config/icon="res://icon.svg"
 
 [display]
@@ -37,10 +37,9 @@ pointing/emulate_touch_from_mouse=true
 
 [physics]
 
+3d/run_on_separate_thread=true
 common/physics_ticks_per_second=48
-3d/sleep_threshold_linear=0.4
-3d/sleep_threshold_angular=0.8
-3d/time_before_sleep=0.25
+3d/physics_engine="GodotPhysics3D"
 3d/solver/solver_iterations=6
 
 [rendering]

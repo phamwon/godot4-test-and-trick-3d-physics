@@ -43,7 +43,7 @@ directional_shadow_mode = 0
 sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.540769, 0.841171, 0, -0.841171, 0.540769, 0, 14.9947, 11.9878)
+transform = Transform3D(1, 0, 0, 0, 0.540769, 0.841171, 0, -0.841171, 0.540769, 0, 28.537, 19.0568)
 keep_aspect = 0
 environment = SubResource("Environment_63rhp")
 current = true
